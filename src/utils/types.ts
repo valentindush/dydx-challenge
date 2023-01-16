@@ -109,11 +109,11 @@ export interface Agent{
 }
 
 export type RoomInfo = {
-    group: Group | null,
+    group: Group[],
     room: Room[],
     hotel: Hotel[],
     travelers: Traveller[],
     payments: Payment[],
-    transer: Transfer[],
+    transfer: Transfer[],
     agent: Agent | null
 }[]

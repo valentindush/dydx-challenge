@@ -4,12 +4,12 @@ import { RoomInfoActions,RoomInfoActionTypes } from './actions';
 const initialState: State = {
   roomInfo: [
     {
-        group: null,
+        group: [],
         room: [],
         hotel: [],
         travelers: [],
         payments: [],
-        transer: [],
+        transfer: [],
         agent: null
     }
   ]

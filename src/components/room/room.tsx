@@ -10,6 +10,9 @@ import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import PersonIcon from '@mui/icons-material/Person';
+import ChildCareIcon from '@mui/icons-material/ChildCare';
+import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -52,6 +55,15 @@ const rooms = {
 }
 
 
+//Get room Information from the redux store
+
+//the initial data is from the utils/roomInfo.ts file
+//the roomInfo is what is being used here
+//So make the initial state to be those data
+
+
+
+
 const Room = () => {
 
   const [value, setValue] = React.useState(0);
@@ -68,7 +80,7 @@ const Room = () => {
       <div className="flex items-center justify-between p-2 bg-cyan-600">
         <div className="flex items-center gap-8 px-4">
           <IconButton aria-label='delete' >
-            <MenuIcon fontSize='large' color='inherit' />
+            <MenuIcon fontSize='large' className='text-white' />
           </IconButton>
           <h2 className='text-white text-xl font-bold'>Room Darshboard</h2>
         </div>
@@ -112,18 +124,53 @@ const Room = () => {
 
                 </div>
 
+                <img src={room.hotel[0].hotelImage} className='h-[300px] w-full object-cover' alt="" />
+
                 <div className="flex gap-4 mt-4 mb-4">
                   <button className='border-2 border-green-600 rounded-full p-1 gap-2 pr-3 flex items-center justify-center text-green-600'>
                     <CheckCircleOutlineIcon color='success' fontSize='medium' />
                     Booked
                   </button>
-                  <button className='border-2 border-purple-400 rounded-full p-1 gap-2 pr-3 flex items-center justify-center text-purple-400'>
-                    <CheckCircleOutlineIcon color='info' fontSize='medium' />
+                  <button className='border-2 border-[#A51E8F] rounded-full p-1 gap-2 pr-3 flex items-center justify-center text-[#A51E8F]'>
+                    <div className="border-2 border-[#A51E8F] rounded-full">
+                      <AttachMoneyIcon className='fill-[#A51E8F]' fontSize='medium' />
+                    </div>
                     Balance due
                   </button>
                 </div>
 
-                <img src={room.hotel[0].hotelImage} className='h-[300px] w-full object-cover' alt="" />
+                <div className="">
+                  <p className='text-sm text-gray-700'>{room.hotel[0].hotelDescription}</p>
+                </div>
+
+                {/* Guests */}
+
+                <div className="flex items-center gap-7 mt-4">
+                  <button className='text-cyan-500 flex items-center gap-2 text-sm'><EditLocationAltIcon fontSize='small' />Modify</button>
+                  <button className='text-cyan-500 flex items-center gap-2 text-sm'>
+                    <div className="border-2 border-cyan-500 rounded-full">
+                      <AttachMoneyIcon fontSize='small' />
+                    </div>
+                    Make payment
+                  </button>
+                </div>
+
+                <div className="mt-4">
+                  <h2 className='text-gray-800 text-lg mb-3'>Guests in this room</h2>
+
+                  {room.travelers.map((traveler, index) => {
+                    return(
+                      <button key={index} className="border-2 border-cyan-500 p-1  text-cyan-500 rounded-full flex items-center gap-1 pr-2">
+                        {traveler.age > 18 ?<PersonIcon fontSize='small' />:
+                        <ChildCareIcon fontSize='small' />}
+                        <span>{traveler.age > 18? "Adult":"Child"} {index + 1}</span>
+                      </button>
+                    )
+                  })}
+
+                </div>
+
+
               </TabPanel>
             )
           })}

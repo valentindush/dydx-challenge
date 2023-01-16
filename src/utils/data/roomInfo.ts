@@ -1,4 +1,4 @@
-import { Agent, Group, Hotel, Payment, Room, RoomInfo, Transfer, Traveller } from "../types";
+import { Agent, Group, Hotel, Payment, Room, Transfer, Traveller } from "../types";
 
 
 
