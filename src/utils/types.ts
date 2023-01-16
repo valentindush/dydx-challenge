@@ -41,7 +41,8 @@ export interface Room {
     transferType:string,
     tzPackage: string,
     bookingNumber: string,
-    ptidPricingType: string
+    ptidPricingType: string,
+    balanceChecked: string,
 }
 
 export interface Hotel {
@@ -72,7 +73,7 @@ export interface Traveller {
     email: string,
     birthdate: Date,
     age: number,
-    amountPaid: number,
+    amountPaid: number | null,
     purchasedInsurance:string,
     gender: string,
     status:string
@@ -86,11 +87,11 @@ export interface Payment {
     creditCardOwner: string,
     paymentDate: Date,
     last4:string,
-    stripeReceipt: string,
+    stripeReceipt: string | null,
 }
 
 export interface Transfer{
-    transferCompanyName: string,
+    transferCompanyName: string | null,
     transferCompanyDescription: string,
     transferImageLink:string,
     transferImageDescription: string,
@@ -103,7 +104,7 @@ export interface Agent{
     agentName: string,
     agentFirstName: string,
     agentPhoneWork: string,
-    agentPhoneMobile: string,
+    agentPhoneMobile: string | null,
     agentEmail:string
 }
 

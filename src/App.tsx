@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getRoomsById, roomIds } from './utils/api'
+import Room from './components/room/room'
 function App() {
   
 
@@ -7,13 +8,13 @@ function App() {
     const data = await getRoomsById(roomIds)
   }
 
-  useEffect(() => {
-    getData()
-  }, [])
+  // useEffect(() => {
+  //   getData()
+  // }, [])
 
   return (
     <div className="App">
-     
+     <Room />
     </div>
   )
 }
